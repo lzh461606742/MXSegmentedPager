@@ -207,6 +207,18 @@
 
 #pragma mark <MXScrollViewDelegate>
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (scrollView == self.contentView && [self.delegate respondsToSelector:@selector(segmentedPager:willBeginDraggingWithParallaxHeader:)]) {
+        [self.delegate segmentedPager:self willBeginDraggingWithParallaxHeader:scrollView.parallaxHeader];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (scrollView == self.contentView && [self.delegate respondsToSelector:@selector(segmentedPager:didEndDeceleratingWithParallaxHeader:)]) {
+        [self.delegate segmentedPager:self didEndDeceleratingWithParallaxHeader:scrollView.parallaxHeader];
+    }
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.contentView && [self.delegate respondsToSelector:@selector(segmentedPager:didScrollWithParallaxHeader:)]) {
         [self.delegate segmentedPager:self didScrollWithParallaxHeader:scrollView.parallaxHeader];

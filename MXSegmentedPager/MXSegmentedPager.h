@@ -102,6 +102,12 @@ typedef NS_ENUM(NSInteger, MXSegmentedControlPosition) {
  */
 - (CGFloat)heightForSegmentedControlInSegmentedPager:(MXSegmentedPager *)segmentedPager;
 
+//将要开始滚动
+- (void)segmentedPager:(MXSegmentedPager *)segmentedPager willBeginDraggingWithParallaxHeader:(MXParallaxHeader *)parallaxHeader;
+
+//停止滚动
+- (void)segmentedPager:(MXSegmentedPager *)segmentedPager didEndDeceleratingWithParallaxHeader:(MXParallaxHeader *)parallaxHeader;
+
 /**
  Tells the delegate that the segmented pager has scrolled with the parallax header.
  
